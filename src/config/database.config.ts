@@ -5,7 +5,9 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
  * Builds the TypeORM connection options from environment variables (.env).
  * No credentials are hardcoded here: they all come from the environment.
  */
-export function buildDatabaseConfig(config: ConfigService): TypeOrmModuleOptions {
+export function buildDatabaseConfig(
+  config: ConfigService,
+): TypeOrmModuleOptions {
   return {
     type: 'mysql',
     host: config.get<string>('DB_HOST', 'localhost'),

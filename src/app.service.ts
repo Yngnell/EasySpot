@@ -2,7 +2,11 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  getInfo() {
+    return {
+      name: 'EasySpot API',
+      description: 'Parking space reservation backend',
+      status: 'running',
+    };
   }
 }
