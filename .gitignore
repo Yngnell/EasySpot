@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+*.tsbuildinfo
+
+# Environment variables / secrets (never commit real credentials)
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+
+# Personal files (instructions, previous activities, notes)
+Files/
+CLAUDE.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
