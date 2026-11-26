@@ -2,10 +2,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import type { Relation } from 'typeorm';
 import { decimalTransformer } from '../../common/transformers/decimal.transformer.js';
+import { ParkingSpace } from '../../parking-spaces/entities/parking-space.entity.js';
 
 @Entity('parking_lots')
 export class ParkingLot {
@@ -49,6 +52,10 @@ export class ParkingLot {
     transformer: decimalTransformer,
   })
   hourlyRate: number;
+
+  /** One lot has many parking spaces */
+  @OneToMany(() => ParkingSpace, (space) => space.lot)
+  spaces: Relation<ParkingSpace[]>;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
