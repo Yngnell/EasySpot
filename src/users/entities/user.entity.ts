@@ -28,7 +28,8 @@ export class User {
   @Column({ type: 'enum', enum: Role, default: Role.Driver })
   role: Role;
 
-  @Column({ length: 20, nullable: true })
+  // type must be explicit: TypeScript cannot describe "string | null" to TypeORM
+  @Column({ type: 'varchar', length: 20, nullable: true })
   phone: string | null;
 
   /** One user (driver) has many reservations */
