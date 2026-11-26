@@ -2,10 +2,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import type { Relation } from 'typeorm';
 import { Role } from '../../common/enums/role.enum.js';
+import { Reservation } from '../../reservations/entities/reservation.entity.js';
 
 @Entity('users')
 export class User {
@@ -27,6 +30,10 @@ export class User {
 
   @Column({ length: 20, nullable: true })
   phone: string | null;
+
+  /** One user (driver) has many reservations */
+  @OneToMany(() => Reservation, (reservation) => reservation.user)
+  reservations: Relation<Reservation[]>;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

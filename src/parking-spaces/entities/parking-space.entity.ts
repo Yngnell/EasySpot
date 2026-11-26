@@ -4,12 +4,14 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
 import type { Relation } from 'typeorm';
 import { ParkingLot } from '../../parking-lots/entities/parking-lot.entity.js';
+import { Reservation } from '../../reservations/entities/reservation.entity.js';
 import { SpaceStatus, SpaceType } from '../enums/space.enums.js';
 
 @Entity('parking_spaces')
@@ -36,6 +38,10 @@ export class ParkingSpace {
   @ManyToOne(() => ParkingLot, (lot) => lot.spaces, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'lot_id' })
   lot: Relation<ParkingLot>;
+
+  /** One space has many reservations over time */
+  @OneToMany(() => Reservation, (reservation) => reservation.space)
+  reservations: Relation<Reservation[]>;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

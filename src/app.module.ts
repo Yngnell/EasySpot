@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module.js';
 import { buildDatabaseConfig } from './config/database.config.js';
 import { ParkingLotsModule } from './parking-lots/parking-lots.module.js';
 import { ParkingSpacesModule } from './parking-spaces/parking-spaces.module.js';
+import { ReservationsModule } from './reservations/reservations.module.js';
 import { UsersModule } from './users/users.module.js';
 
 @Module({
@@ -22,6 +23,7 @@ import { UsersModule } from './users/users.module.js';
     AuthModule,
     ParkingLotsModule,
     ParkingSpacesModule,
+    ReservationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
