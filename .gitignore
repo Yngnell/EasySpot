@@ -28,3 +28,6 @@ CLAUDE.md
 Thumbs.db
 .vscode/
 .idea/
+
+# Frontend lives in its own repo (EasySpot_FrontEnd)
+easyspot-frontend/

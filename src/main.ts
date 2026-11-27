@@ -21,6 +21,14 @@ async function bootstrap() {
   // MySQL constraint errors -> 409 / 400 instead of 500
   app.useGlobalFilters(new DatabaseExceptionFilter());
 
+  // CORS: lets the React frontend (another origin, e.g. localhost:5173)
+  // call this API from the browser. Only the listed origins are allowed.
+  app.enableCors({
+    origin: (process.env.CORS_ORIGIN ?? 'http://localhost:5173')
+      .split(',')
+      .map((origin) => origin.trim()),
+  });
+
   await app.listen(process.env.PORT ?? 3000);
 }
 await bootstrap();
